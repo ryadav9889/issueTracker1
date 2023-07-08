@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--     linking css file     -->
+    <link rel="stylesheet" href="/css/showIssue.css">
+     <!--    title       -----    -->
+    <title><%=title%></title>
+</head>
+<body>
+     <!-- button to go back to home -->
+    <a href="/"><h3 id="home">Issue Tracker</h3></a>
+    <h1 >All Issues</h1>
+    <!-- div block to show issue=============================================== -->
+    <div class="col div">
+         <% for( let issue of project ) { %>
+           <div class="row">
+            <span>Title:</span><span id="data"><%= issue.title %></span>
+           </div>
+           <div class="row">
+            <span>Description:</span><span id="data"><%= issue.description %></span>
+           </div>
+           <div class="row">
+            <span>Labels:</span><span id="data"><%= issue.labels %></span>
+           </div>
+           <!-- <div class="row">
+            <span>Labels:</span><span id="data"><%= issue.labels %></span>
+           </div> -->
+
+           <div class="row">
+            <span>Author:</span><span id="data"><%= issue.author %></span>
+           </div>
+
+           <div>
+            <span>========================================</span>
+           </div>
+
+
+           <%}%>
+
+    </div>
+    <!-- ================================================================================= -->
+    
+</body>
+</html>

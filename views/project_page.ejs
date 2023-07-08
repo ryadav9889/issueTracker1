@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/projectPage.css">
+     <!-- <link rel="stylesheet" href="/css/home.css"> -->
+    <title><%=title%></title>
+</head>
+
+<!-- =======body================ -->
+<body>
+           <!-- ========button to go back========= -->
+    <a href="/"><h1 id="home">Issue Tracker</h1></a>
+<!--========== button to create issue ================== -->
+    <a href="#"><h1 id="CreateIssue">Create Issue</h1></a>
+
+
+<!-- ================ showing  project info ==============================-->
+    <div class="project-Info">
+        <span id="heading"><h1><u>Project Detail Page</u></h1></span>
+        <div>
+            <h2> <span id="title">Project</span> : <%= project.name %></h2>
+        </div>
+
+        <div>
+            <h2>
+                <span id="title">Author</span> : <%= project.Author %>
+            </h2>
+        </div>
+        <div>
+            <h2 >
+                <span id="title">Description</span> : <%= project.Description %>
+            </h2>
+        </div>
+    </div>
+    <!-- ===================================================== -->
+
+<!-- ===================== Create Issue form ======================= -->
+    <div class="popup">
+        <div class="pop-content">
+            <!--  form -->
+            <form action="/users/create-issue" method="post" >
+                
+                <label for="name">Title</label>
+                <input type="text" name="Title">
+
+                
+                <label for="Description">Description</label>
+                <textarea name="Description" id="" cols="30" rows="10"></textarea>
+                
+                
+                <label for="addLabel">Add Label</label>
+
+                <div class="label">
+                    <div>
+                        <input type="checkbox" name="label" id="" value="bug">
+                <label for="">Bug</label>
+                    </div>
+
+               <div> <input type="checkbox" name="label" id="" value="UI Improvement">
+                <label for="UI Improvement">UI Improvement</label></div>
+
+                <div><input type="checkbox" name="label" id="" value="Duplicate">
+                    <label for="UI Improvement">Duplicate</label></div>
+
+                <div><input type="checkbox" name="label" id="" value="Enhancement">
+                <label for="Enhancement">Enhancement</label></div>
+                </div>
+
+                <input type="text" hidden  name="id" value=<%=project._id%>
+                <label for="Author">Author</label>
+                <input type="text" name="Author">
+
+                <button type="submit" id="btnSubmit">Submit</button>
+              </form>
+              <a href="#" id="Back">Back</a>
+        </div>
+
+  </div>
+  <!-- ================================================================================== -->
+
+<!-- button  -->
+  <div class="btn">
+    <div>
+       <a href="/users/<%=project._id%>"><button>Show All Issue</button></a> 
+    </div>
+
+    <div>
+        <button id="filter">Filter Issue</button>
+    </div>
+
+    <div>
+        <button id="SearchIssue">Search Issue</button>
+    </div>
+  </div>
+
+<!-- form to get issue using title and discription -->
+  <div class="popup1">
+    <div class="pop-content1">
+             <form action="/users/getIssue" method="post" >
+            <label for="Title">Title</label>
+            <input type="text" name="title" id="Title" >
+
+            <label for="Description">Description</label>
+            <input type="text" name="Description" id="Description">
+            
+            <button type="submit">Submit</button>
+             
+        </form>
+        <a href="#" id="back">Back</a>
+    </div>
+  </div>
+
+  <!-- filter by label -->
+  <div class="popup2">
+    <div class="pop-content2">
+             <form action="/users/filter" method="post" >
+                <label for="">Labels</label><br>
+                <input type="radio" name="label" id="" value="bug">
+                <label for="">Bug</label><br>
+
+                <input type="radio" name="label" id="" value="UI Improvement">
+                <label for="">UI Improvement</label><br>
+
+                <input type="radio" name="label" id="" value="Duplicate">
+                <label for="">Duplicate</label><br>
+
+                <label for="">Author</label><br>
+                <input type="text" placeholder="Author" name="author">
+                   
+                <button type="submit">Submit</button>
+             
+        </form>
+        <a href="#" id="back2">Back</a>
+    </div>
+  </div>
+
+
+
+    
+</body>
+<!-- ==================script =========================== -->
+<script>
+    // getting element by there id and adding event listener
+    document.getElementById("CreateIssue").addEventListener('click',function(){
+    document.querySelector(".popup").style.display="flex";})
+
+ // getting element by there id and adding event listener
+    document.getElementById("Back").addEventListener('click',function(){
+       document.querySelector(".popup").style.display="none";})
+
+ // getting element by there id and adding event listener
+    document.getElementById("back").addEventListener('click',function(){
+    document.querySelector(".popup1").style.display="none";})
+
+ // getting element by there id and adding event listener
+    document.getElementById("back2").addEventListener('click',function(){
+    document.querySelector(".popup2").style.display="none";})
+    
+     // getting element by there id and adding event listener
+    document.getElementById("SearchIssue").addEventListener('click',function(){
+    document.querySelector(".popup1").style.display="flex";})
+
+    
+     // getting element by there id and adding event listener
+  document.getElementById("filter").addEventListener('click',function(){
+    document.querySelector(".popup2").style.display="flex";})
+
+
+</script>
+<!-- ================================================================================== -->
+
+</html>

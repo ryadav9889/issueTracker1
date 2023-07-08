@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ====== linking css files======== -->
+    <link rel="stylesheet" href="/css/home.css">
+    <!-- title -->
+    <title>Home Page</title>
+</head>
+<body>
+
+     <!-- heading -->
+    <h1 >Issue Tracker</h1>
+
+    
+    <!-- ===== button to add project========= -->
+    <a href="#" id="btn">Add Project</a>  
+    
+    
+<!-- =====================main div for popup========================= -->
+    <div class="popup">
+        <div class="pop-content">
+          <!-- form to get info to add new project -->
+          <form action="/users/create-project" method="post" class="col">
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <label for="Description">Description</label>
+            <!-- <input type="text" name="Description"> -->
+            <textarea name="Description" id="" cols="2" rows="2"></textarea>
+            <label for="Author">Author</label>
+            <input type="text" name="Author">
+            <button type="submit" id="btnSubmit">Submit</button>
+          </form>
+          <a href="#" id="Back">Back</a>
+
+        </div>
+    </div>
+    <!-- ================================================ -->
+
+          <!-- =================== showing list  of project================ -->
+    <div class="col ">
+      <!-- <% for( let project of projects ) { %> -->
+      
+        <div class="row list">
+          <div >
+            <strong> Name of the project : </strong><%= project.name %>
+          </div>
+          <div >
+              <strong> Author : </strong> <%= project.Author %>
+          </div>
+          
+          <div>
+            <strong> Description : </strong><%= project.Description %>
+          </div>
+            <div>
+              <a href="/users/project/<%=project._id%>" class="btn btn-primary m-auto"
+                >Open project</a>
+            </div>
+        </div>
+        
+      
+      <!-- <% } %> -->
+    </div>
+
+    <!-- ========================== End ======================================= -->
+</body>
+<!-- end of body -->
+<!-- ----- linking script file---------- -->
+<script src="/js/script.js"></script>
+<!-- ---------------------------------- -->
+</html>
